@@ -6,6 +6,7 @@ import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 const path = require('path')
 const iconpath = path.join(process.cwd(),'/src/assets/trayIcon.ico')
+const image = nativeImage.createFromPath(iconpath)
 var tray = null
 
 // Scheme must be registered before the app is ready
@@ -19,6 +20,8 @@ async function createWindow() {
     width: 800,
     height: 600,
     autoHideMenuBar: true,
+    icon: image,
+    title: 'Client Orchestrator',
     webPreferences: {
 
       // Use pluginOptions.nodeIntegration, leave this alone
@@ -38,7 +41,7 @@ async function createWindow() {
     win.loadURL('app://./index.html')
   }
 
-  const image = nativeImage.createFromPath(iconpath)
+ 
   tray = new Tray(image)
 
   const contextMenu = Menu.buildFromTemplate([
