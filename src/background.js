@@ -5,8 +5,8 @@ import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 const path = require('path')
-let iconpath = path.join(process.cwd(),'/src/assets/trayIcon.ico')
-let tray = null
+const iconpath = path.join(process.cwd(),'/src/assets/trayIcon.ico')
+var tray = null
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
